@@ -27,10 +27,13 @@ public class NetworkUtils {
 
     private static final String BASE_URL =
             "https://api.themoviedb.org/3/movie/";
-    public static final String  BASE_POSTER_URI =
+    public static final String  BASE_POSTER_URL =
+            "https://image.tmdb.org/t/p/w185";
+    public static final String  BASE_BACKDROP_URL =
             "https://image.tmdb.org/t/p/w500";
 
-    private static final String API_KEY = "tMDB API KEY";
+
+    private static final String API_KEY = "a2359089468517bdf94f5d74c3c22c1a";
 
     private static final String API_KEY_PARAM = "api_key";
 
@@ -62,6 +65,8 @@ public class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection =
                 (HttpURLConnection) url.openConnection();
+        urlConnection.setConnectTimeout(5000);
+        urlConnection.setReadTimeout(10000);
         try {
             InputStream in = urlConnection.getInputStream();
 
@@ -103,8 +108,8 @@ public class NetworkUtils {
             for (int i = 0; i < movieArray.length(); i++) {
                 Movie movie = new Movie();
                 JSONObject movieData = movieArray.getJSONObject(i);
-                movie.setPosterUrl(BASE_POSTER_URI + movieData.getString(POSTER));
-                movie.setBackdropUrl(BASE_POSTER_URI + movieData.getString(BACKDROP));
+                movie.setPosterUrl(BASE_POSTER_URL + movieData.getString(POSTER));
+                movie.setBackdropUrl(BASE_BACKDROP_URL + movieData.getString(BACKDROP));
                 movie.setMovieOverview(movieData.getString(OVERVIEW));
                 movie.setMovieReleaseDate(movieData.getString(RELEASE_DATE));
                 movie.setMovieTitle(movieData.getString(ORIGINAL_TITLE));

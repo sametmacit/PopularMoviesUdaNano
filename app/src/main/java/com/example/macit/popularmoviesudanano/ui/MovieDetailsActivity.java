@@ -1,8 +1,10 @@
 package com.example.macit.popularmoviesudanano.ui;
 
 import android.content.Context;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Movie movie = getIntent().getExtras().getParcelable(MOVIE_EXTRA);
 
 
@@ -38,5 +41,16 @@ public class MovieDetailsActivity extends AppCompatActivity {
         overview.setText(movie.getMovieOverview());
         vote_average.setText(movie.getMovieVoteAverage());
         release_date.setText(getString(R.string.releaseDate)+ movie.getMovieReleaseDate());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

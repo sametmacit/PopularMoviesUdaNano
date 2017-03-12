@@ -39,11 +39,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        mRecyclerView = (RecyclerView)
+                findViewById(R.id.recyclerview_posters);
+
         pBar = (ProgressBar) findViewById(R.id.pb_loading_indicator);
         moviesArrayList = new ArrayList<>();
+
         if(isOnline()) {
-            mRecyclerView = (RecyclerView)
-                    findViewById(R.id.recyclerview_posters);
 
             final GridLayoutManager layoutManager =
                     new GridLayoutManager(this, getResources()
@@ -60,9 +63,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     protected void onResume() {
         super.onResume();
-        mMovieAdapter = new MovieAdapter(moviesArrayList,getApplicationContext(),this);
-        mRecyclerView.setAdapter(mMovieAdapter);
-        mMovieAdapter.notifyDataSetChanged();
+
 
     }
 
