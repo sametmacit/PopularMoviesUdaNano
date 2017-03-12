@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="overview">Overview</string>
+    <string name="backdropimage">backdropImage</string>
+    <string name="posterimage">posterImage</string>
+    <string name="releaseDate">Release Date:  </string>
+    <integer name="num_of_columns">2</integer>
+
+</resources>
