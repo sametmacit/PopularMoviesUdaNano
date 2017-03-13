@@ -33,7 +33,7 @@ public class NetworkUtils {
             "https://image.tmdb.org/t/p/w500";
 
 
-    private static final String API_KEY = "a2359089468517bdf94f5d74c3c22c1a";
+    private static final String API_KEY = "tMDB API KEY";
 
     private static final String API_KEY_PARAM = "api_key";
 
